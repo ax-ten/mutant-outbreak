@@ -5,63 +5,46 @@ using UnityEngine.UI;
 
 public class XPBar : MonoBehaviour
 {
-    public int currentLevel;
-    public int maxSplice;
-
-    public GameObject xpBarOre, xpBarOoze, xpBarPlant;
-    int barHeight = 28;
-
-
-    public void setSplice(int spliceType, int expAmount)
-    {
-        switch (spliceType)
-        {
-            case 0:
-                xpBarOre.GetComponent<RectTransform>().sizeDelta = new Vector2(expAmount, barHeight);
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-        }
-    }
-    public void increaseSplice(int spliceType, int expAmount)
-    {
-        switch (spliceType)
-        {
-            case 0:
-                float currentSize = xpBarOre.GetComponent<RectTransform>().sizeDelta.x;
-                xpBarOre.GetComponent<RectTransform>().sizeDelta = new Vector2(currentSize + expAmount, barHeight);
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-        }
-    }
-
+    public GameObject xpBarHolder, xpBarOre, xpBarOoze, xpBarPlant;
+    RectTransform HolderTransform, OreTransform, OozeTransform, PlantTransform;
+    //Quantità SLICE 
+    float oreAmount = 25, oozeAmount = 25, plantAmount = 50;
+    int maxSpliceAmount = 100;
+    float barHeight, maxSpliceWidth;
 
     // Start is called before the first frame update
     void Start()
     {
-        //increaseSplice(0, 20);
+        HolderTransform = xpBarHolder.GetComponent<RectTransform>();
+        OreTransform = xpBarOre.GetComponent<RectTransform>();
+        OozeTransform = xpBarOoze.GetComponent<RectTransform>();
+        PlantTransform = xpBarPlant.GetComponent<RectTransform>();
 
+        barHeight = HolderTransform.sizeDelta.y - 6;
+        maxSpliceWidth = (HolderTransform.sizeDelta.x - 10);
     }
 
     // Update is called once per frame
     void Update()
     {
-        RectTransform xpBarOreTransform = xpBarOre.GetComponent<RectTransform>();
-        RectTransform xpBarOozeTransform = xpBarOoze.GetComponent<RectTransform>();
-        RectTransform xpBarPlantTransform = xpBarPlant.GetComponent<RectTransform>();
+        //+++MOVE BARS+++
+        //1st bar
+        xpBarOre.transform.position = new Vector2(HolderTransform.position.x + 5, HolderTransform.position.y);
+        //2nd bar
+        xpBarOoze.transform.position = new Vector2(OreTransform.position.x + OreTransform.sizeDelta.x, OreTransform.position.y);
+        //3rd bar
+        xpBarPlant.transform.position = new Vector2(OozeTransform.position.x + OozeTransform.sizeDelta.x, OozeTransform.position.y);
+        
+        if(oreAmount + oozeAmount + plantAmount >= 100)
+        {
+            Debug.Log("Aumento Livello");
+            //TODO: trigger "buy ability"
+        }
 
-        //BarPosition = previousBarPosition + (previousBarSize / 2) + (currentBarSize / 2)
-        //SET (2nd bar) TO DESIRED POSITION
-        xpBarOoze.transform.position = new Vector2(xpBarOreTransform.position.x + (xpBarOreTransform.sizeDelta.x / 2) + (xpBarOozeTransform.sizeDelta.x / 2), xpBarOreTransform.position.y);
-        //SET (3rd bar) TO DESIRED POSITION
-        xpBarPlant.transform.position = new Vector2(xpBarOozeTransform.position.x + (xpBarOozeTransform.sizeDelta.x / 2) + (xpBarPlantTransform.sizeDelta.x / 2), xpBarOozeTransform.position.y);
-
+        //+++RESIZE BARS+++
+        OreTransform.sizeDelta = new Vector2(((oreAmount / maxSpliceAmount) * maxSpliceWidth) , barHeight);
+        OozeTransform.sizeDelta = new Vector2(((oozeAmount / maxSpliceAmount) * maxSpliceWidth) , barHeight);
+        PlantTransform.sizeDelta = new Vector2((plantAmount / maxSpliceAmount) * maxSpliceWidth, barHeight);
+        
     }
-
-
 }
