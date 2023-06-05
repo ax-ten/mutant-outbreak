@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InputProvider{
-    private static GameInputActions GIA = new();
+    private static readonly GameInputActions GIA = new();
 
     public Vector2 MousePos(){
         return GIA.Player.Mouse.ReadValue<Vector2>();
@@ -13,7 +13,7 @@ public class InputProvider{
         return  GIA.Player.Walk.ReadValue<Vector2>();
     }
 
-    public bool doJump(){
+    public bool DoJump(){
         return GIA.Player.Jump.triggered /*&& player.isOnGround*/;
     }
 

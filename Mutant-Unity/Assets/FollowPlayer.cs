@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour {
+    private Vector3 _offset;
     public Transform target;
-    Vector3 offset;
-    public float _smoothSpeed;
+    public float smoothSpeed;
 
     void Start() {
-        transform.eulerAngles = new Vector3(20,-45,0);
-        offset = transform.position - target.position;
-        _smoothSpeed = 3f;
+        var transform1 = transform;
+        transform1.eulerAngles = new Vector3(20,-45,0);
+        _offset = transform1.position - target.position;
+        smoothSpeed = 3f;
     }
 
-    private void LateUpdate() {
+    void LateUpdate() {
         SmoothFollow();
     }
 
     void SmoothFollow() {
-        Vector3 targetPos = target.position + offset;
-        Vector3 smoothFollow = Vector3.Lerp(transform.position, targetPos, _smoothSpeed);
+        var targetPos = target.position + _offset;
+        var smoothFollow = Vector3.Lerp(transform.position, targetPos, smoothSpeed);
         transform.position = smoothFollow;
         //transform.LookAt(target);
     }

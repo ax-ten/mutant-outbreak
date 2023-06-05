@@ -4,20 +4,20 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour{
-    private Rigidbody rb;
-    private InputProvider inputProvider;
-    public float _turnSpeed = 3600;
-    public float _speed = 45f;
-    public float _jumpForce = 3f;
-    static string myLog;
+    private Rigidbody _rb;
+    private InputProvider _inputProvider;
+    public float turnSpeed = 860;
+    public float speed = 45f;
+    public float jumpForce = 3f;
+    static string _myLog;
 
     void OnEnable(){
-        inputProvider = new InputProvider();
-        inputProvider.Enable();
+        _inputProvider = new InputProvider();
+        _inputProvider.Enable();
     }
 
     void Start()    {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
     }
 
     void Update()    {
@@ -26,26 +26,29 @@ public class PlayerControls : MonoBehaviour{
         Jump();
     }
 
-    Vector3 getWalkDirection(){
+    Vector3 GetWalkDirection(){
         return Quaternion.AngleAxis(-45, Vector3.up) * 
-            new Vector3(inputProvider.WalkDirection().x, 0, inputProvider.WalkDirection().y);    
+            new Vector3(_inputProvider.WalkDirection().x, 0, _inputProvider.WalkDirection().y);    
     }
 
     void Walk() {
-        rb.MovePosition(transform.position + getWalkDirection() * _speed * Time.deltaTime );
+        _rb.MovePosition(transform.position + GetWalkDirection() * (speed * Time.deltaTime) );
     }
 
-    void Jump() {
-        if (inputProvider.doJump()){
-            rb.AddForce(new Vector3 (0,5,0) * _jumpForce);
+    private void Jump() {
+        if (_inputProvider.DoJump()){
+            _rb.AddForce(new Vector3 (0,5,0) * jumpForce);
         }
     }
 
     void Look() {
-        if (getWalkDirection() != Vector3.zero){
-            var relative = (transform.position + getWalkDirection()) - transform.position;
+        if (GetWalkDirection() != Vector3.zero){
+            var Position = transform.position;
+            var relative = (position + GetWalkDirection()) - position;
             var rot = Quaternion.LookRotation(relative, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _turnSpeed*Time.deltaTime);
+            var rotationalFactor = Vector3.Angle(position, relative);
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation, rot, Mathf.Pow(rotationalFactor,1)* turnSpeed*Time.deltaTime);
         }
     }
 }
