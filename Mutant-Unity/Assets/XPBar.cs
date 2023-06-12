@@ -8,7 +8,7 @@ public class XPBar : MonoBehaviour
     public GameObject xpBarHolder, xpBarOre, xpBarOoze, xpBarPlant;
     RectTransform HolderTransform, OreTransform, OozeTransform, PlantTransform;
     //Quantità SLICE 
-    float oreAmount = 25, oozeAmount = 25, plantAmount = 50;
+    float oreAmount = 20, oozeAmount = 25, plantAmount = 50;
     int maxSpliceAmount = 100;
     float barHeight, maxSpliceWidth;
 
