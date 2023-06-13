@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class CloseEnemiesCollider : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider collision)
-    {
-        Debug.Log("RILEVATOOO!!!!");
-    }
+    
 }

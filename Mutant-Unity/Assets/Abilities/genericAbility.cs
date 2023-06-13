@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class genericAbility : ScriptableObject
+
+public abstract class GenericAbility : ScriptableObject
 {
     //NOME e DESCRIZIONE abilità
     string name, description;
@@ -12,13 +13,12 @@ public abstract class genericAbility : ScriptableObject
     public float cooldownTime, activeTime;    
     //TIPO: 0 plantoide, 1 minerale, 2 melma
     int type;
-    //RANGE di azione e RAGGIO DELL'AREA d'azione
-    float range, area;
+    //RANGE di azione
+    float range;
     //se genera ulteriori effetti grafici
     bool hasVisuals;
-    //Quantità danni
-    float damage;
-    genericAbility upgradeBasic, upgradeAdvanced;
+    GenericAbility upgradeBasic, upgradeAdvanced;
+    public Enemy closestEnemy;
 
     
     public abstract int Perform(GameObject parent);

@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    int HP;
+    public int HP = 0;
     
-
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +15,6 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(HP);
     }
 }

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
 {
-    public genericAbility ability;
+    public GenericAbility ability;
     float cooldownTime;
-    float activeTime;  
+    float activeTime; 
+    Enemy closeEnemy;
 
     enum abilityState
     {
@@ -15,11 +16,31 @@ public class AbilityHolder : MonoBehaviour
         cooldown
     }
 
-    abilityState state = abilityState.ready;
 
-    // Update is called once per frame
+    private void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("RILEVATOOO!!!!");
+        if(collision.TryGetComponent<Enemy>(out Enemy enemy))
+        {
+            closeEnemy = enemy;
+            Debug.Log("NEMICO BRUTTO!!!!");
+        }else
+        {//non mi piacciono le null reference :(
+            closeEnemy = null;
+        }
+    }//FIXME: dovrebbe aiutare le null reference ma potrebbero esserci race conditions rare 
+    /*se viene fatto l'accesso a closeEnemy mentre il nemico è despawnato/disabilitato allora ci ptrebbe essere un use-after-free.*/
+    private void OnTriggerExit(Collider collision)
+    {
+        Debug.Log("USCITO!!!!");
+        closeEnemy = null;
+    } 
+
+    abilityState state = abilityState.ready;
     void Update()
     {
+        if(closeEnemy != null)
+            ability.closestEnemy = closeEnemy;
         switch(state)
         {
             case abilityState.ready:
@@ -49,5 +70,4 @@ public class AbilityHolder : MonoBehaviour
                 break;
         }
     }
-        
 }
