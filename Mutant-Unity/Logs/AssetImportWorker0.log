@@ -5057,3 +5057,9 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1512.319750 seconds.
+  path: Assets/Abilities/Ability Assets/Plant Necrofagia.asset
+  artifactKey: Guid(f8a7ecdb1b3714130b4e55c0c46461fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Abilities/Ability Assets/Plant Necrofagia.asset using Guid(f8a7ecdb1b3714130b4e55c0c46461fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '742837d0ec9686da71a929a7b27138ff') in 0.012395 seconds 
