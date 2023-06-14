@@ -7,17 +7,23 @@ public class PlantNecrofagia : GenericAbility
 {
     //string name = "Necrafagia";
     //string description = "GNAMM!!! YUMMY!!! CARNE PUTRIDA DI MOSTRO!!! 😋🤤";
+
+
     public override int Perform(GameObject parent)
     {
         if(closestEnemy != null)
         {
-            closestEnemy.despawn();
-            parent.GetComponent<Player>().HP = 10;
+            if(closestEnemy.isAlive())
+            {
+                closestEnemy.despawn();
+                parent.GetComponent<Player>().HP = 10;
+                return 0;
+            }
         }
         else
         {
             Debug.Log("Nessun nemico vicino");
-            return 1;
+            return 1; 
         }
         return 0;
     }

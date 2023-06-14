@@ -19,7 +19,6 @@ public class AbilityHolder : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("RILEVATOOO!!!!");
         if(collision.TryGetComponent<Enemy>(out Enemy enemy))
         {
             closeEnemy = enemy;
@@ -28,8 +27,8 @@ public class AbilityHolder : MonoBehaviour
         {//non mi piacciono le null reference :(
             closeEnemy = null;
         }
-    }//FIXME: dovrebbe aiutare le null reference ma potrebbero esserci race conditions rare 
-    /*se viene fatto l'accesso a closeEnemy mentre il nemico è despawnato/disabilitato allora ci ptrebbe essere un use-after-free.*/
+    }//FIXME: dovrebbe aiutare le null reference ma potrebbero esserci race conditions 
+    /*se viene fatto l'accesso a closeEnemy mentre il nemico è despawnato/disabilitato allora ci ptrebbe essere uno use-after-free*/
     private void OnTriggerExit(Collider collision)
     {
         Debug.Log("USCITO!!!!");
@@ -39,8 +38,10 @@ public class AbilityHolder : MonoBehaviour
     abilityState state = abilityState.ready;
     void Update()
     {
+        //FIXME: effettuare il controllo solo quando è necessario
         if(closeEnemy != null)
             ability.closestEnemy = closeEnemy;
+
         switch(state)
         {
             case abilityState.ready:

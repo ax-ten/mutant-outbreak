@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9d439b61c2b4a76996da28437f3531, type: 3}
   m_Name: Plant Necrofagia
   m_EditorClassIdentifier: 
-  cooldownTime: 5.15
-  activeTime: 10.29
+  cooldownTime: 1.92
+  activeTime: 1.82
+  closestEnemy: {fileID: 0}
