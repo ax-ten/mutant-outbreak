@@ -39,8 +39,7 @@ public class AbilityHolder : MonoBehaviour
     void Update()
     {
         //FIXME: effettuare il controllo solo quando è necessario
-        if(closeEnemy != null)
-            ability.closestEnemy = closeEnemy;
+        ability.closestEnemy = closeEnemy;
 
         switch(state)
         {
