@@ -27,25 +27,26 @@ public class AbilityHolder : MonoBehaviour
         {//non mi piacciono le null reference :(
             closeEnemy = null;
         }
-    }//FIXME: dovrebbe aiutare le null reference ma potrebbero esserci race conditions 
-    /*se viene fatto l'accesso a closeEnemy mentre il nemico è despawnato/disabilitato allora ci ptrebbe essere uno use-after-free*/
+    }
     private void OnTriggerExit(Collider collision)
     {
         Debug.Log("USCITO!!!!");
         closeEnemy = null;
     } 
 
+
+
     abilityState state = abilityState.ready;
     void Update()
     {
-        //FIXME: effettuare il controllo solo quando è necessario
-        ability.closestEnemy = closeEnemy;
-
         switch(state)
         {
             case abilityState.ready:
                 if(/*TODO: tasto premuto*/ true)
                 { 
+                    if(closeEnemy != null)
+                        if(closeEnemy.isActive())
+                            ability.closestEnemy = closeEnemy;
                     ability.Perform(gameObject); 
                     state = abilityState.active;
                     activeTime = ability.activeTime;

@@ -13,8 +13,7 @@ public class PlantNecrofagia : GenericAbility
     {
         if(closestEnemy != null)
         {
-            if(closestEnemy.isActive() && 
-                !closestEnemy.isAlive())
+            if(!closestEnemy.isAlive())
             {
                 closestEnemy.despawn();
                 parent.GetComponent<Player>().HP += 10;
