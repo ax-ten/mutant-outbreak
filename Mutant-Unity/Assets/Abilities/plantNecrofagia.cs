@@ -3,28 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class PlantNecrofagia : GenericAbility
+public sealed class PlantNecrofagia : GenericAbility
 {
     //string name = "Necrafagia";
     //string description = "GNAMM!!! YUMMY!!! CARNE PUTRIDA DI MOSTRO!!! 😋🤤";
 
-
     public override int Perform(GameObject parent)
     {
-        if(closestEnemy != null)
+        //FIXME: decidere se usare un indice o cercare per nome
+        GameObject childObject = parent.transform.GetChild(0).gameObject;
+        NecrofagiaCollider necrofagiaCollider = (NecrofagiaCollider) childObject.GetComponent(typeof(NecrofagiaCollider));
+        Enemy closeEnemy = necrofagiaCollider.getEnemy();
+
+
+        if(closeEnemy != null)
         {
-            if(!closestEnemy.isAlive())
+            if(!closeEnemy.isAlive())
             {
-                closestEnemy.despawn();
+                closeEnemy.despawn();
                 parent.GetComponent<Player>().HP += 10;
                 return 0;
             }
         }
-        else
-        {
-            Debug.Log("Nessun nemico vicino");
-            return 1; 
-        }
-        return 0;
+        Debug.Log("Nessun nemico vicino");
+        return 1;
+    }
+
+    public void Start()
+    {
     }
 }

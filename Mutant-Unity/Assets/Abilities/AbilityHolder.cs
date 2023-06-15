@@ -4,39 +4,18 @@ using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
 {
+    //ABILITÀ
     public GenericAbility ability;
     float cooldownTime;
-    float activeTime; 
-    Enemy closeEnemy;
-
+    float activeTime;
     enum abilityState
     {
         ready,
         active,
         cooldown
     }
-
-
-    private void OnTriggerEnter(Collider collision)
-    {
-        if(collision.TryGetComponent<Enemy>(out Enemy enemy))
-        {
-            closeEnemy = enemy;
-            Debug.Log("NEMICO BRUTTO!!!!");
-        }else
-        {//non mi piacciono le null reference :(
-            closeEnemy = null;
-        }
-    }
-    private void OnTriggerExit(Collider collision)
-    {
-        Debug.Log("USCITO!!!!");
-        closeEnemy = null;
-    } 
-
-
-
     abilityState state = abilityState.ready;
+
     void Update()
     {
         switch(state)
@@ -44,10 +23,7 @@ public class AbilityHolder : MonoBehaviour
             case abilityState.ready:
                 if(/*TODO: tasto premuto*/ true)
                 { 
-                    if(closeEnemy != null)
-                        if(closeEnemy.isActive())
-                            ability.closestEnemy = closeEnemy;
-                    ability.Perform(gameObject); 
+                    ability.Perform(gameObject);
                     state = abilityState.active;
                     activeTime = ability.activeTime;
                 }

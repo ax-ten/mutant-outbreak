@@ -6,7 +6,7 @@ using UnityEngine;
 public class OreCharge : GenericAbility
 {
     //name = "Carica";
-    string descrizione = "batteria scarica";
+    //string descrizione = "batteria scarica";
     public override int Perform(GameObject parent)
     {
         

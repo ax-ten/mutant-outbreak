@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class GenericAbility : ScriptableObject
 {
     //NOME e DESCRIZIONE abilità
-    string name, description;
+    //string name, description;
     //RARITÀ: 0 = iniziale, 1 = bassa, 2 = media, 3 = alta
     int rarity;
     //COOLDOWN e DURATA
@@ -18,7 +18,6 @@ public abstract class GenericAbility : ScriptableObject
     //se genera ulteriori effetti grafici
     bool hasVisuals;
     GenericAbility upgradeBasic, upgradeAdvanced;
-    public Enemy closestEnemy;
 
     
     public abstract int Perform(GameObject parent);

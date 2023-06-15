@@ -350,6 +350,7 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Abilities/AbilityHolder.cs"
+"Assets/Abilities/Collisioni/NecrofagiaCollider.cs"
 "Assets/Abilities/GenericAbility.cs"
 "Assets/Abilities/OreCharge.cs"
 "Assets/Abilities/PlantNecrofagia.cs"
