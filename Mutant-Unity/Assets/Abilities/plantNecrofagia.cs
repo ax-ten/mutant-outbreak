@@ -11,9 +11,8 @@ public sealed class PlantNecrofagia : GenericAbility
     public override int Perform(GameObject parent)
     {
         //FIXME: decidere se usare un indice o cercare per nome
-        GameObject childObject = parent.transform.GetChild(0).gameObject;
-        NecrofagiaCollider necrofagiaCollider = (NecrofagiaCollider) childObject.GetComponent(typeof(NecrofagiaCollider));
-        Enemy closeEnemy = necrofagiaCollider.getEnemy();
+        EnemyCollider enemyCollision = (EnemyCollider) parent.transform.GetChild(0).gameObject.GetComponent(typeof(EnemyCollider));
+        Enemy closeEnemy = enemyCollision.getEnemy();
 
 
         if(closeEnemy != null)
@@ -27,9 +26,5 @@ public sealed class PlantNecrofagia : GenericAbility
         }
         Debug.Log("Nessun nemico vicino");
         return 1;
-    }
-
-    public void Start()
-    {
     }
 }

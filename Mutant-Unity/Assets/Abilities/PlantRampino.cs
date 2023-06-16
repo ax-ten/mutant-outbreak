@@ -7,20 +7,22 @@ public class PlantRampino : GenericAbility
 {
     //string name = "Necrafagia";
     //string description = "GNAMM!!! YUMMY!!! CARNE PUTRIDA DI MOSTRO!!! 😋🤤";
-    int grapplingHookLenght;
-    GameObject GrapplingHook;
-    
-    
-    void Start()
-    {
-        
-    }
-    
-    
     public override int Perform(GameObject parent)
     {
-        GrapplingHook = parent.transform.GetChild(0).gameObject;
-        return 0;
-    }
+        //FIXME: decidere se usare un indice o cercare per nome
+        EnemyCollider enemyCollision = (EnemyCollider) parent.transform.GetChild(1).gameObject.GetComponent(typeof(EnemyCollider));
+        Enemy closeEnemy = enemyCollision.getEnemy();
 
+
+        if(closeEnemy != null)
+        {
+            if(closeEnemy.isAlive())
+            {
+                parent.transform.LookAt(closeEnemy.transform);
+                return 0;
+            }
+        }
+        Debug.Log("Nessun nemico vicino");
+        return 1;
+    }
 }

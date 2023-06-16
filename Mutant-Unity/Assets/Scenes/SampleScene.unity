@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f498961a8cb3462c87f188ff912ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 11400000, guid: 8d5cd3bb291494cae8a75e8da86fba22, type: 2}
+  ability: {fileID: 11400000, guid: c3437cc8dae4f4306a4c3941d1e8bbcd, type: 2}
 --- !u!54 &222382882
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1323,7 +1323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734261670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 608, y: 710.25006, z: -47.3}
+  m_LocalPosition: {x: 570.2, y: 710.25006, z: -5.4}
   m_LocalScale: {x: 14.33, y: 22.54, z: 22.39}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1352,13 +1352,14 @@ GameObject:
   m_Component:
   - component: {fileID: 816346037}
   - component: {fileID: 816346038}
+  - component: {fileID: 816346039}
   m_Layer: 0
   m_Name: RampinoCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &816346037
 Transform:
   m_ObjectHideFlags: 0
@@ -1366,14 +1367,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816346036}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.17364825, z: 0, w: 0.9848078}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 222382879}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -20, z: 0}
 --- !u!65 &816346038
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1382,11 +1383,23 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816346036}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.5, y: 0.01, z: 0.01}
   m_Center: {x: 2.22, y: 0, z: 0}
+--- !u!114 &816346039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816346036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867e654ab459f4735a58cc036866553b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,8 +1493,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1020155168}
-  - component: {fileID: 1020155170}
   - component: {fileID: 1020155171}
+  - component: {fileID: 1020155170}
   m_Layer: 0
   m_Name: NecrofagiaCollider
   m_TagString: Untagged
@@ -1513,7 +1526,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1020155167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f768567d54f1461d885b65f8670fdd2, type: 3}
+  m_Script: {fileID: 11500000, guid: 867e654ab459f4735a58cc036866553b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &1020155171

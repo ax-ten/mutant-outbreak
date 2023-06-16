@@ -19,6 +19,9 @@ public class Enemy : MonoBehaviour
         Debug.Log("ded x_x");
         gameObject.SetActive(false);
         isLiving = false;
+        //FIXME: eliminare dalla memoria o no?
+        Object.Destroy(gameObject);
+        Object.Destroy(this);
     }
     // Start is called before the first frame update
     void Start()
