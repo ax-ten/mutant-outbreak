@@ -6,8 +6,8 @@ public class EnemyCollider : MonoBehaviour
 {
     Enemy collidingEnemy;
 
-    //FIXME: se si potesse usare TryGetComponent direttamente in getEnemy non ci sarebbe bisogno di eseguire il controllo collisioni inutilmente e si eviterebbero null references
-    private void OnTriggerEnter(Collider collision)
+    
+    private void OnTriggerStay(Collider collision)
     {
         if(collision.TryGetComponent<Enemy>(out Enemy enemy))
         {
@@ -25,10 +25,6 @@ public class EnemyCollider : MonoBehaviour
     } 
     public Enemy getEnemy()
     {
-        if(collidingEnemy != null){
-            if(collidingEnemy.isActive())
-                return collidingEnemy;
-        }
-        return null;
+        return collidingEnemy;
     }
 }

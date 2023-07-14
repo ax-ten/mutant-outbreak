@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74bdeb952ecbe43d2a56a8f46a20e412, type: 3}
   m_Name: Plant Rampino
   m_EditorClassIdentifier: 
-  cooldownTime: 0
-  activeTime: 0
-  closestEnemy: {fileID: 0}
+  cooldownTime: 0.8
+  activeTime: 7.5
+  force: 1000

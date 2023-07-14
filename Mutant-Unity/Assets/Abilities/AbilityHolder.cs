@@ -6,8 +6,8 @@ public class AbilityHolder : MonoBehaviour
 {
     //ABILITÀ
     public GenericAbility ability;
-    float cooldownTime;
-    float activeTime;
+    public float cooldownTime;
+    public float activeTime;
     enum abilityState
     {
         ready,

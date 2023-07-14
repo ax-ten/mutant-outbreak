@@ -10,7 +10,6 @@ public sealed class PlantNecrofagia : GenericAbility
 
     public override int Perform(GameObject parent)
     {
-        //FIXME: decidere se usare un indice o cercare per nome
         EnemyCollider enemyCollision = (EnemyCollider) parent.transform.GetChild(0).gameObject.GetComponent(typeof(EnemyCollider));
         Enemy closeEnemy = enemyCollision.getEnemy();
 
